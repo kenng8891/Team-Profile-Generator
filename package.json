@@ -1,6 +1,28 @@
 {
   "dependencies": {
     "i": "^0.3.7",
-    "inquirer": "^9.0.0"
-  }
+    "inquirer": "^8.2.4",
+    "jest": "^28.1.1"
+  },
+  "name": "team-profile-generator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenng8891/Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenng8891/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/kenng8891/Team-Profile-Generator#readme"
 }
