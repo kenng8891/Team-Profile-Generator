@@ -1,12 +1,11 @@
-const manager = require('../lib/manager')
-const manager = new employee('kenny', 999, 'kenng8891')
+const Manager = require('../lib/manager')
 
 test('creates an manager', () => {
-    const manager = new manager('Kenny');
+    const manager = new Manager('kenny', 999, 'kenng8891@yahoo.com')
     
     expect(manager.name).toEqual(expect.any(String));
     expect(manager.id).toEqual(expect.any(Number));
-    expect(StorageManager.email).toEqual(expect.any(String))
+    expect(manager.email).toEqual(expect.any(String))
 
 })
 

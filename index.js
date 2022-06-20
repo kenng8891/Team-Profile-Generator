@@ -6,8 +6,8 @@ const Manager = require('./lib/manager');
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const dist_DIR = path.resolve(__dirname, "dist");
+const outputPath = path.join(dist_DIR, "team.html");
 
 const render = require("./src/htmlrender");
 
@@ -18,7 +18,6 @@ const employees = [];
 employeeType = () => {
     console.log("What is the employee's role?");
     return inquirer.prompt([
-        //employees role
         {
             type: "list",
             message: "What is the Employee's role?",
@@ -106,7 +105,7 @@ addIntern = () => {
 //add another employee yes or no prompt
 addEmployee = () => {
     return inquirer.prompt([
-        //add another team member
+        
         {
             type: "list",
             message: "Add another team member?",
@@ -125,40 +124,38 @@ addEmployee = () => {
     });
 };
 
-//initializing Manager questions and welcome message
+// Manager questions
 
 const init = () => {
-   if(!fs.existsSync(OUTPUT_DIR))
-   fs.mkdirSync(OUTPUT_DIR); //conditional check
-    console.log("Welcome! \nTo Generate a Team, \nAnswer the following prompts \nYour team will be organized in the \noutput folder team.html file.");
+   if(!fs.existsSync(dist_DIR))
+   fs.mkdirSync(dist_DIR); //conditional check
+    console.log("To Generate a Team, please answer the following prompts.");
     return inquirer.prompt([
-        //questions about Employee
         {
             type: "input",
-            message: "Who is the team's Manager?",
+            message: "What is the team manager's name?",
             name: "name"
         },
         {
             type: "input",
-            message: "Manager's employee ID:",
+            message: "Please enter manager's employee ID:",
             name: "id"
         },
         {
             type: "input",
-            message: "Manager's email address:",
+            message: "please enter manager's email address:",
             name: "email"
         },
         {
             type: "input",
-            message: "Manager's office number:",
+            message: "please enter manager's office number:",
             name: "officeNumber"
         },
     ]).then((managerResults) => {
         managerResults.role = "Manager";
         const { name, id, email, officeNumber} = managerResults;
         const newManager = new Manager(name, id, email, officeNumber);
-        employees.push(newManager);
-        // addEmployee();
+        employees.push(newManager)
         employeeType();
     })
 };
@@ -169,7 +166,7 @@ renderHtml = () => {
         if (err) {
             return console.log(err);
         } else {
-            return console.log("Team HTML file created in OUTPUT folder!")
+            return console.log("Team HTML file created in dist folder!")
         };
     })
 };
